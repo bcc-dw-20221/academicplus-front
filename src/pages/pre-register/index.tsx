@@ -2,7 +2,7 @@ import Router from "next/router";
 import { toast } from "react-toastify";
 import { PATHS } from "../../utils/constants";
 import { Button, Container, Flex } from "@chakra-ui/react";
-export default function University() {
+export default function PreRegister() {
   return (
     <Container gap="1rem">
       <Button

@@ -16,7 +16,7 @@ import Container from "@mui/material/Container";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
-import { registerCourse } from "../../services/courses";
+import { registerCourse } from "../../services/coursesService";
 import { toast } from "react-toastify";
 import { PATHS, TEXTS } from "../../utils/constants";
 import Router from "next/router";
@@ -55,7 +55,7 @@ export default function CreateUniversity() {
 
   return (
     <Container fixed>
-      <Text>{`${"Cadastro"} de Curso`}</Text>
+      <Text fontSize="2rem">{`${"Cadastro"} de Curso`}</Text>
       <Grid container spacing={0}>
         <Grid item lg={12} md={12} xs={12}>
           <Card variant="outlined" sx={{ p: 0 }}>

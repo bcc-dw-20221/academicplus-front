@@ -27,4 +27,9 @@ async function registerPerson(
   return person.data;
 }
 
-export { registerPerson };
+async function getAllPreRecords() {
+  const preRecords = await axios.get("/pre-register");
+  return preRecords.data;
+}
+
+export { registerPerson, getAllPreRecords };
