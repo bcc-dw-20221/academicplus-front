@@ -1,16 +1,16 @@
-import Head from "next/head";
-import Header from "../components/Header";
+import type { NextPage } from "next";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { PATHS } from "../utils/constants";
 
-export default function PageIndex() {
-  return (
-    <>
-      <Head>
-        <title>Academic Plus</title>
-      </Head>
-      <Header />
-      <main>
-        <h1>Academic Plus</h1>
-      </main>
-    </>
-  );
-}
+const Home: NextPage = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push(PATHS.HOME);
+  }, []);
+
+  return <></>;
+};
+
+export default Home;
