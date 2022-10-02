@@ -7,11 +7,15 @@ const PATHS = {
   HOME: "/home",
   LOGIN: "/login",
   UNIVERSITY: "/university",
+  REGISTER_UNIVERSITY: "/university/create",
   PRE_REGISTER: "/pre-register",
+  FORM_PRE_REGISTER: "/pre-register/create",
   COURSES: "/courses",
   FORM_COURSES: "/courses/create",
-  FORM_PRE_REGISTER: "/pre-register/create",
-  REGISTER_UNIVERSITY: "/university/create",
+  PROFESSOR: "/professor",
+  FORM_PROFESSOR: "/professor/create",
+  STUDENT: "/student",
+  FORM_STUDENT: "/student/create",
 };
 
 export { TEXTS, PATHS };

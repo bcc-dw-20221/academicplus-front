@@ -15,4 +15,9 @@ async function registerCourse(
   return university.data;
 }
 
-export { registerCourse };
+async function getAllCourses() {
+  const courses = await axios.get("/courses");
+  return courses.data;
+}
+
+export { registerCourse, getAllCourses };

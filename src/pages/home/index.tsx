@@ -20,6 +20,14 @@ export default function Home() {
           <Button onClick={() => Router.push(PATHS.COURSES)}>Cursos</Button>
         </ListItem>
         <ListItem _hover={{ bg: "green" }}>
+          <Button onClick={() => Router.push(PATHS.PROFESSOR)}>
+            Professor
+          </Button>
+        </ListItem>
+        <ListItem _hover={{ bg: "green" }}>
+          <Button onClick={() => Router.push(PATHS.STUDENT)}>Aluno</Button>
+        </ListItem>
+        <ListItem _hover={{ bg: "green" }}>
           <Button onClick={() => Router.push(PATHS.LOGIN)}>Login</Button>
         </ListItem>
       </List>

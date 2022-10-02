@@ -55,7 +55,7 @@ export default function CreateUniversity() {
 
   return (
     <Container fixed>
-      <Text>{`${"Cadastro"} de Universidade`}</Text>
+      <Text fontSize="2rem">{`${"Cadastro"} de Universidade`}</Text>
       <Grid container spacing={0}>
         <Grid item lg={12} md={12} xs={12}>
           <Card variant="outlined" sx={{ p: 0 }}>
@@ -129,7 +129,7 @@ export default function CreateUniversity() {
                         direction={{ xs: "column", sm: "row" }}
                       >
                         <Button type="submit" variant="contained">
-                          Salvar
+                          Cadastrar
                         </Button>
                         <Button
                           variant="contained"

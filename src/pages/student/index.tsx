@@ -2,15 +2,15 @@ import Router from "next/router";
 import { toast } from "react-toastify";
 import { PATHS } from "../../utils/constants";
 import { Button, Container, Flex } from "@chakra-ui/react";
-export default function PreRegister() {
+export default function Student() {
   return (
     <Container gap="1rem">
       <Button
         fontSize="2rem"
         _hover={{ bg: "blue" }}
-        onClick={() => Router.push(PATHS.FORM_PRE_REGISTER)}
+        onClick={() => Router.push(PATHS.FORM_STUDENT)}
       >
-        Registrar uma pessoa
+        Cadastrar um Aluno
       </Button>
       <Flex>
         <Button

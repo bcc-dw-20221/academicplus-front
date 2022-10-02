@@ -23,7 +23,7 @@ import { PATHS, TEXTS } from "../../utils/constants";
 import Router from "next/router";
 import { registerPerson } from "../../services/preRegisterService";
 
-export default function CreateUniversity() {
+export default function CreatePreRegister() {
   const [name, setName] = useState("");
   const [cpf, setCpf] = useState("");
   const [sex, setSex] = useState("");
@@ -212,7 +212,7 @@ export default function CreateUniversity() {
                         direction={{ xs: "column", sm: "row" }}
                       >
                         <Button type="submit" variant="contained">
-                          Salvar
+                          Cadastrar
                         </Button>
                         <Button
                           variant="contained"

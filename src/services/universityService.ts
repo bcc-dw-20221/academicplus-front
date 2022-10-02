@@ -16,4 +16,10 @@ async function registerUniversity(name: string, address: address) {
   return university.data;
 }
 
-export { registerUniversity };
+async function getAllUniversities() {
+  const universities = await axios.get("/universities");
+
+  return universities.data;
+}
+
+export { registerUniversity, getAllUniversities };
