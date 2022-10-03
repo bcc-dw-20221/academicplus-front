@@ -1,4 +1,3 @@
-// import { useContext, useEffect } from 'react';
 import React, { useEffect, useState } from "react";
 import {
   Box,
@@ -16,42 +15,35 @@ import Container from "@mui/material/Container";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
+import Router from "next/router";
+import axios from "../../config/axios";
 import { getAllCourses } from "../../services/coursesService";
 import { registerStudent } from "../../services/studentService";
 import { getAllPreRecords } from "../../services/preRegisterService";
 
 import { toast } from "react-toastify";
 import { PATHS, TEXTS } from "../../utils/constants";
-import Router from "next/router";
 
-export default function CreateStudent() {
+export default function CreateStudent(prop: any) {
   const [CPF, setCPF] = useState("");
-  const [courses, setCourses] = useState<any[]>([]);
   const [courseName, setCourseName] = useState("");
-  const [preRecords, setPreRecords] = useState<any[]>([]);
-  useEffect(() => {
-    (async () => {
-      try {
-        const data = await getAllCourses();
-        const dataPreRecords = await getAllPreRecords();
-        setCourses(data);
-        setPreRecords(dataPreRecords);
-      } catch (error) {
-        toast.error(TEXTS.ERROR, {
-          autoClose: 2000
-        });
-      }
-    })();
-  }, []);
-  console.log(preRecords);
-  const courseId = courses.filter(item => item?.name === courseName);
-  const cpfExists = preRecords.filter(item => item?.id?.value === CPF);
+
+  console.log(prop);
+  const courseId = prop.courses.filter(
+    (item: any) => item?.name === courseName
+  );
+  const cpfExists = prop.preRecords.filter(
+    (item: any) => item?.id?.value === CPF
+  );
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       if (cpfExists) {
         if (CPF && courseId[0].id.value) {
           await registerStudent(CPF, courseId[0].id.value);
+          toast.success(TEXTS.REGISTER_SUCESS, {
+            autoClose: 2000
+          });
         }
       }
     } catch (error) {
@@ -94,7 +86,7 @@ export default function CreateStudent() {
                         <MenuItem disabled value="Selecione uma Universidade">
                           Selecione um Curso
                         </MenuItem>
-                        {courses.map(course => {
+                        {prop.courses.map((course: any) => {
                           return (
                             <MenuItem
                               key={course.id.value}
@@ -136,4 +128,20 @@ export default function CreateStudent() {
       </Grid>
     </Container>
   );
+}
+
+//método executado no lado do servidor, quando o user acessar a página;
+//nesse caso o next faz um get na minha api antes de rendezirar a pagina, ou seja
+//antes de aparecer qualquer tipo de interface
+export async function getServerSideProps() {
+  const dataPreRecords = await axios.get("/pre-register");
+  const dataCourses = await axios.get("/courses");
+
+  return {
+    props: {
+      preRecords: dataPreRecords.data,
+      courses: dataCourses.data
+    } // will be passed to the page component as props
+    //sempre tem que passar o componente props, mesmo que seja vazio.
+  };
 }

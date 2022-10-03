@@ -49,11 +49,12 @@ export default function CreateProfessor() {
     item?.name.includes(universityName)
   );
   const cpfExists = preRecords.filter(item => item?.id?.value === CPF);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(universityId[0].id.value, qualifications);
     try {
-      if (cpfExists) {
+      if (cpfExists.length > 0) {
         if (universityId && CPF && qualifications) {
           await registerProfessor(
             CPF,
@@ -64,6 +65,10 @@ export default function CreateProfessor() {
             autoClose: 2000
           });
         }
+      } else {
+        toast.error(TEXTS.CPF_INVALID, {
+          autoClose: 2000
+        });
       }
     } catch (error) {
       toast.error(TEXTS.ERROR, {
