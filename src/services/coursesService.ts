@@ -4,15 +4,15 @@ async function registerCourse(
   name: string,
   hours: number,
   level: string,
-  grade: string
+  grau: string
 ) {
-  const university = await axios.post("/courses", {
+  const courses = await axios.post("/courses", {
     name,
     hours,
     level,
-    grade
+    grau
   });
-  return university.data;
+  return courses.data;
 }
 
 async function getAllCourses() {

@@ -5,7 +5,7 @@ async function registerProfessor(
   universityId: string,
   qualifications: Array<string>
 ) {
-  const professor = await axios.post("/courses", {
+  const professor = await axios.post("/professors", {
     personId,
     universityId,
     qualifications

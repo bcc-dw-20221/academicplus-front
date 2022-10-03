@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import axios from "../config/axios";
 
 interface address {

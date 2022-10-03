@@ -1,6 +1,7 @@
 const TEXTS = {
   REGISTER_SUCESS: "Cadastrado com sucesso!",
-  ERROR: "Verifique os dados e tente novamente!"
+  ERROR: "Verifique os dados e tente novamente!",
+  CPF_INVALID: "CPF inválido!"
 };
 
 const PATHS = {
