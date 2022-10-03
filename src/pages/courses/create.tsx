@@ -26,20 +26,16 @@ export default function CreateUniversity() {
   const [hours, setHours] = useState(0);
   const [level, setLevel] = useState("TECNICO");
   const [grade, setGrade] = useState("SUPERIOR");
-  //   const [address, setAdress] = useState({
-  //     street: "",
-  //     number: "",
-  //     zipCode: "",
-  //   });
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      console.log(name, hours, level, grade);
       if (name && hours && level && grade) {
         await registerCourse(name, hours, level, grade);
         toast.success(TEXTS.REGISTER_SUCESS, {
           autoClose: 2000
         });
+        Router.push(PATHS.COURSES);
       } else {
         toast.error(TEXTS.ERROR, {
           autoClose: 2000
@@ -50,7 +46,6 @@ export default function CreateUniversity() {
         autoClose: 2000
       });
     }
-    Router.push(PATHS.COURSES);
   };
 
   return (
