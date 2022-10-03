@@ -9,7 +9,7 @@ import {
   MenuItem,
   Stack,
   Switch,
-  TextField,
+  TextField
 } from "@mui/material";
 import { Text, Button as ButtonChakra } from "@chakra-ui/react";
 import Container from "@mui/material/Container";
@@ -33,7 +33,7 @@ export default function CreatePreRegister() {
   const [address, setAdress] = useState({
     street: "",
     number: "",
-    zipCode: "",
+    zipCode: ""
   });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -60,12 +60,12 @@ export default function CreatePreRegister() {
           address
         );
         toast.success(TEXTS.REGISTER_SUCESS, {
-          autoClose: 2000,
+          autoClose: 2000
         });
       }
     } catch (error) {
       toast.error(TEXTS.ERROR, {
-        autoClose: 2000,
+        autoClose: 2000
       });
     }
     Router.push(PATHS.PRE_REGISTER);
@@ -88,7 +88,7 @@ export default function CreatePreRegister() {
                         size="small"
                         placeholder="Nome da Universidade"
                         required
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={e => setName(e.target.value)}
                       ></TextField>
                     </FormControl>
                   </Grid>
@@ -98,7 +98,7 @@ export default function CreatePreRegister() {
                       <TextField
                         size="small"
                         placeholder="Ex: 111.111.111-11"
-                        onChange={(e) => setCpf(e.target.value)}
+                        onChange={e => setCpf(e.target.value)}
                         required
                       ></TextField>
                     </FormControl>
@@ -111,7 +111,7 @@ export default function CreatePreRegister() {
                         size="small"
                         defaultValue="Feminino"
                         // required
-                        onChange={(e) =>
+                        onChange={e =>
                           setSex(
                             e.target.value === "Masculino" ? "MALE" : "FEMALE"
                           )
@@ -129,7 +129,7 @@ export default function CreatePreRegister() {
                       <TextField
                         size="small"
                         placeholder="Ex: Fransquinha da Avon"
-                        onChange={(e) => setMotherName(e.target.value)}
+                        onChange={e => setMotherName(e.target.value)}
                         required
                       ></TextField>
                     </FormControl>
@@ -140,7 +140,7 @@ export default function CreatePreRegister() {
                       <TextField
                         size="small"
                         placeholder="Ex: seuemail@gmail.com"
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={e => setEmail(e.target.value)}
                         required
                       ></TextField>
                     </FormControl>
@@ -152,7 +152,7 @@ export default function CreatePreRegister() {
                         type="date"
                         size="small"
                         placeholder="Ex: 06/08/1999"
-                        onChange={(e) => setBirthDate(e.target.value)}
+                        onChange={e => setBirthDate(e.target.value)}
                         required
                       ></TextField>
                     </FormControl>
@@ -163,8 +163,8 @@ export default function CreatePreRegister() {
                       <TextField
                         size="small"
                         placeholder="Ex: Travessa Felismino"
-                        onChange={(e) =>
-                          setAdress((prevState) => {
+                        onChange={e =>
+                          setAdress(prevState => {
                             return { ...prevState, street: e.target.value };
                           })
                         }
@@ -179,8 +179,8 @@ export default function CreatePreRegister() {
                         type="number"
                         size="small"
                         placeholder="Ex: 255"
-                        onChange={(e) =>
-                          setAdress((prevState) => {
+                        onChange={e =>
+                          setAdress(prevState => {
                             return { ...prevState, number: e.target.value };
                           })
                         }
@@ -194,8 +194,8 @@ export default function CreatePreRegister() {
                       <TextField
                         size="small"
                         placeholder="Ex: 62.800-000"
-                        onChange={(e) =>
-                          setAdress((prevState) => {
+                        onChange={e =>
+                          setAdress(prevState => {
                             return { ...prevState, zipCode: e.target.value };
                           })
                         }

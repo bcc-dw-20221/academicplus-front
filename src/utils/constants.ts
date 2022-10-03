@@ -1,6 +1,6 @@
 const TEXTS = {
   REGISTER_SUCESS: "Cadastrado com sucesso!",
-  ERROR: "Verifique os dados e tente novamente!",
+  ERROR: "Verifique os dados e tente novamente!"
 };
 
 const PATHS = {
@@ -15,7 +15,7 @@ const PATHS = {
   PROFESSOR: "/professor",
   FORM_PROFESSOR: "/professor/create",
   STUDENT: "/student",
-  FORM_STUDENT: "/student/create",
+  FORM_STUDENT: "/student/create"
 };
 
 export { TEXTS, PATHS };

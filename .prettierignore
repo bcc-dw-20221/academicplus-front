@@ -1,0 +1,7 @@
+
+dist
+src/assets/*
+yarn.lock
+.gitignore
+package-lock.json
+

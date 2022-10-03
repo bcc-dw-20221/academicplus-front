@@ -9,7 +9,7 @@ import {
   MenuItem,
   Stack,
   Switch,
-  TextField,
+  TextField
 } from "@mui/material";
 import { Text, Button as ButtonChakra } from "@chakra-ui/react";
 import Container from "@mui/material/Container";
@@ -29,7 +29,7 @@ export default function CreateUniversity() {
   const [address, setAdress] = useState({
     street: "",
     number: "",
-    zipCode: "",
+    zipCode: ""
   });
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -37,17 +37,17 @@ export default function CreateUniversity() {
       if (name && address.street && address.number && address.zipCode) {
         await registerUniversity(name, address);
         toast.success(TEXTS.REGISTER_SUCESS, {
-          autoClose: 2000,
+          autoClose: 2000
         });
       } else {
         toast.error(TEXTS.ERROR, {
-          autoClose: 2000,
+          autoClose: 2000
         });
       }
     } catch (error) {
       console.log(address);
       toast.error(TEXTS.ERROR, {
-        autoClose: 2000,
+        autoClose: 2000
       });
     }
     Router.push(PATHS.UNIVERSITY);
@@ -70,7 +70,7 @@ export default function CreateUniversity() {
                         size="small"
                         placeholder="Nome da Universidade"
                         required
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={e => setName(e.target.value)}
                       ></TextField>
                     </FormControl>
                   </Grid>
@@ -80,8 +80,8 @@ export default function CreateUniversity() {
                       <TextField
                         size="small"
                         placeholder="Ex: Travessa Felismino"
-                        onChange={(e) =>
-                          setAdress((prevState) => {
+                        onChange={e =>
+                          setAdress(prevState => {
                             return { ...prevState, street: e.target.value };
                           })
                         }
@@ -96,8 +96,8 @@ export default function CreateUniversity() {
                         type="number"
                         size="small"
                         placeholder="Ex: 255"
-                        onChange={(e) =>
-                          setAdress((prevState) => {
+                        onChange={e =>
+                          setAdress(prevState => {
                             return { ...prevState, number: e.target.value };
                           })
                         }
@@ -111,8 +111,8 @@ export default function CreateUniversity() {
                       <TextField
                         size="small"
                         placeholder="Ex: 62.800-000"
-                        onChange={(e) =>
-                          setAdress((prevState) => {
+                        onChange={e =>
+                          setAdress(prevState => {
                             return { ...prevState, zipCode: e.target.value };
                           })
                         }

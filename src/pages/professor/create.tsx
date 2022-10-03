@@ -9,7 +9,7 @@ import {
   MenuItem,
   Stack,
   Switch,
-  TextField,
+  TextField
 } from "@mui/material";
 import { Text, Button as ButtonChakra } from "@chakra-ui/react";
 import Container from "@mui/material/Container";
@@ -39,16 +39,16 @@ export default function CreateProfessor() {
         setUniversities(data);
       } catch (error) {
         toast.error(TEXTS.ERROR, {
-          autoClose: 2000,
+          autoClose: 2000
         });
       }
     })();
   }, []);
 
-  const universityId = universities.filter((item) =>
+  const universityId = universities.filter(item =>
     item?.name.includes(universityName)
   );
-  const cpfExists = preRecords.filter((item) => item?.id?.value === CPF);
+  const cpfExists = preRecords.filter(item => item?.id?.value === CPF);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(universityId[0].id.value, qualifications);
@@ -61,13 +61,13 @@ export default function CreateProfessor() {
             qualifications
           );
           toast.success(TEXTS.REGISTER_SUCESS, {
-            autoClose: 2000,
+            autoClose: 2000
           });
         }
       }
     } catch (error) {
       toast.error(TEXTS.ERROR, {
-        autoClose: 2000,
+        autoClose: 2000
       });
     }
     Router.push(PATHS.PROFESSOR);
@@ -90,7 +90,7 @@ export default function CreateProfessor() {
                         size="small"
                         placeholder="Ex: 000.000.000-00"
                         required
-                        onChange={(e) => setCPF(e.target.value)}
+                        onChange={e => setCPF(e.target.value)}
                       ></TextField>
                     </FormControl>
                   </Grid>
@@ -102,12 +102,12 @@ export default function CreateProfessor() {
                         size="small"
                         defaultValue="Selecione uma Universidade"
                         // required
-                        onChange={(e) => setUniversityName(e.target.value)}
+                        onChange={e => setUniversityName(e.target.value)}
                       >
                         <MenuItem disabled value="Selecione uma Universidade">
                           Selecione uma Universidade
                         </MenuItem>
-                        {universities.map((university) => {
+                        {universities.map(university => {
                           return (
                             <MenuItem
                               key={university.id.value}
@@ -127,10 +127,10 @@ export default function CreateProfessor() {
                         size="small"
                         placeholder="Ex: Mestre em IA"
                         required
-                        onChange={(e) =>
+                        onChange={e =>
                           setQualilfications([
                             ...qualifications,
-                            e.target.value,
+                            e.target.value
                           ])
                         }
                       ></TextField>

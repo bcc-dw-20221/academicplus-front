@@ -11,7 +11,7 @@ async function registerUniversity(name: string, address: address) {
   console.log(address);
   const university = await axios.post("/universities", {
     name,
-    address,
+    address
   });
   return university.data;
 }
