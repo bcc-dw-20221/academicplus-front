@@ -9,7 +9,7 @@ import {
   MenuItem,
   Stack,
   Switch,
-  TextField,
+  TextField
 } from "@mui/material";
 import { Text, Button as ButtonChakra } from "@chakra-ui/react";
 import Container from "@mui/material/Container";
@@ -38,14 +38,14 @@ export default function CreateStudent() {
         setPreRecords(dataPreRecords);
       } catch (error) {
         toast.error(TEXTS.ERROR, {
-          autoClose: 2000,
+          autoClose: 2000
         });
       }
     })();
   }, []);
   console.log(preRecords);
-  const courseId = courses.filter((item) => item?.name === courseName);
-  const cpfExists = preRecords.filter((item) => item?.id?.value === CPF);
+  const courseId = courses.filter(item => item?.name === courseName);
+  const cpfExists = preRecords.filter(item => item?.id?.value === CPF);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
@@ -77,7 +77,7 @@ export default function CreateStudent() {
                         size="small"
                         placeholder="Ex: 000.000.000-00"
                         required
-                        onChange={(e) => setCPF(e.target.value)}
+                        onChange={e => setCPF(e.target.value)}
                       ></TextField>
                     </FormControl>
                   </Grid>
@@ -89,12 +89,12 @@ export default function CreateStudent() {
                         size="small"
                         defaultValue="Selecione uma Universidade"
                         // required
-                        onChange={(e) => setCourseName(e.target.value)}
+                        onChange={e => setCourseName(e.target.value)}
                       >
                         <MenuItem disabled value="Selecione uma Universidade">
                           Selecione um Curso
                         </MenuItem>
-                        {courses.map((course) => {
+                        {courses.map(course => {
                           return (
                             <MenuItem
                               key={course.id.value}

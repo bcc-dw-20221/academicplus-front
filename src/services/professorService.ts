@@ -8,7 +8,7 @@ async function registerProfessor(
   const professor = await axios.post("/courses", {
     personId,
     universityId,
-    qualifications,
+    qualifications
   });
   return professor.data;
 }

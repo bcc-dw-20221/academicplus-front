@@ -22,7 +22,7 @@ async function registerPerson(
     motherName,
     email,
     birthDate,
-    address,
+    address
   });
   return person.data;
 }

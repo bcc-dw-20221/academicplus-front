@@ -10,7 +10,7 @@ async function registerCourse(
     name,
     hours,
     level,
-    grade,
+    grade
   });
   return university.data;
 }

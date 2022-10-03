@@ -9,7 +9,7 @@ import {
   MenuItem,
   Stack,
   Switch,
-  TextField,
+  TextField
 } from "@mui/material";
 import { Text, Button as ButtonChakra } from "@chakra-ui/react";
 import Container from "@mui/material/Container";
@@ -38,16 +38,16 @@ export default function CreateUniversity() {
       if (name && hours && level && grade) {
         await registerCourse(name, hours, level, grade);
         toast.success(TEXTS.REGISTER_SUCESS, {
-          autoClose: 2000,
+          autoClose: 2000
         });
       } else {
         toast.error(TEXTS.ERROR, {
-          autoClose: 2000,
+          autoClose: 2000
         });
       }
     } catch (error) {
       toast.error(TEXTS.ERROR, {
-        autoClose: 2000,
+        autoClose: 2000
       });
     }
     Router.push(PATHS.COURSES);
@@ -70,7 +70,7 @@ export default function CreateUniversity() {
                         size="small"
                         placeholder="Nome da Universidade"
                         required
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={e => setName(e.target.value)}
                       ></TextField>
                     </FormControl>
                   </Grid>
@@ -81,7 +81,7 @@ export default function CreateUniversity() {
                         size="small"
                         type="number"
                         placeholder="Ex: 100"
-                        onChange={(e) => setHours(parseInt(e.target.value))}
+                        onChange={e => setHours(parseInt(e.target.value))}
                         required
                       ></TextField>
                     </FormControl>
@@ -95,7 +95,7 @@ export default function CreateUniversity() {
                         defaultValue="Tecnico"
                         // required
 
-                        onChange={(e) => setLevel(e.target.value.toUpperCase())}
+                        onChange={e => setLevel(e.target.value.toUpperCase())}
                       >
                         <MenuItem value={"Tecnico"}>Tecnico</MenuItem>
                         <MenuItem value={"Bacharel"}>Bacharel</MenuItem>
@@ -111,7 +111,7 @@ export default function CreateUniversity() {
                         size="small"
                         defaultValue="Superior"
                         // required
-                        onChange={(e) => setGrade(e.target.value.toUpperCase())}
+                        onChange={e => setGrade(e.target.value.toUpperCase())}
                       >
                         <MenuItem value={"Superior"}>Superior</MenuItem>
                         <MenuItem value={"Medio"}>Medio</MenuItem>
