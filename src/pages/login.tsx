@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Header from "../components/Header";
+import Main from "../components/Main";
 
 export default function Login() {
   return (
@@ -8,9 +9,9 @@ export default function Login() {
         <title>Faça seu Login</title>
       </Head>
       <Header />
-      <main>
-        <h1>Login</h1>
-      </main>
+      <Main title="Login">
+        <div>login</div>
+      </Main>
     </>
   );
 }

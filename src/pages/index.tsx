@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Header from "../components/Header";
+import Main from "../components/Main";
 
 export default function PageIndex() {
   return (
@@ -8,9 +9,9 @@ export default function PageIndex() {
         <title>Academic Plus</title>
       </Head>
       <Header />
-      <main>
-        <h1>Academic Plus</h1>
-      </main>
+      <Main title="Home">
+        <div>home</div>
+      </Main>
     </>
   );
 }
