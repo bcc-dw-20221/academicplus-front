@@ -1,47 +1,127 @@
-import { Flex, HStack, Image, Link, Text, Button } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { PATHS } from "../utils/constants";
-function Header() {
-  return (
-    <Flex
-      justify="space-between"
-      px={10}
-      py={5}
-      fontSize={{ base: "12px", md: "16px", lg: "18px" }}
-      wrap="wrap"
-      width="100vw"
-      // position="fixed"
-      height="5rem"
-      top="0"
-      boxShadow="1px 3px #E2E8F0"
-    >
-      <HStack>
-        <Link href="/">
-          <Image src="/LogoAcademicPlus.png" fontWeight={700} marginLeft={4} />
-        </Link>
-      </HStack>
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { MoonStars, Sun, User } from "phosphor-react";
 
-      <HStack>
-        <NextLink href={PATHS.LOGIN}>
-          <Button
-            height={0}
-            fontSize={{ base: "11px", md: "12px", lg: "13px" }}
-            backgroundColor="#fff"
-            color="blue"
-            // border="1px solid blue"
-            // borderRadius={200}
-            padding={3}
-            paddingInlineStart={0}
-            paddingInlineEnd={0}
-          >
-            Entrar
-          </Button>
-        </NextLink>
-        <Text>ou</Text>
-        <Link color="blue">Cadastre-se</Link>
-      </HStack>
-    </Flex>
+const hour = new Date().getHours();
+
+export default function Header() {
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const [user, setUser] = useState("Alexandre");
+  const [toggleMenuUser, setToggleMenuUser] = useState(false);
+
+  useEffect(() => {
+    function checkHour() {
+      if (theme === "system") {
+        if (hour >= 18 && hour <= 6) {
+          localStorage.setItem("theme", "dark");
+          return setTheme("dark");
+        } else {
+          localStorage.setItem("theme", "light");
+          return setTheme("light");
+        }
+      }
+    }
+    checkHour();
+
+    setMounted(true);
+  }, [setTheme, theme]);
+  if (!mounted) return null;
+
+  function isDark() {
+    if (theme) return theme === "dark";
+  }
+
+  const isBrowser = typeof window !== "undefined";
+
+  const isMinWidth = () => {
+    if (isBrowser) return window.matchMedia("(min-width: 640px)").matches;
+    return false;
+  };
+
+  function disconnected() {
+    setUser("");
+    console.log("Desconectado");
+  }
+
+  return (
+    <header
+      className={`card-glass fixed top-0 w-screen flex justify-between sm:justify-center items-center p-4 shadow-md border-b-2
+    bg-white dark:bg-black border-zinc-100 dark:border-zinc-800 z-10`}
+    >
+      <Link href="/">
+        <a>
+          {isMinWidth() ? (
+            <Image
+              src="/logo.svg"
+              alt="Academic Plus"
+              width="566"
+              height="32"
+            />
+          ) : (
+            <Image
+              src="/logoP.svg"
+              alt="Academic Plus"
+              width="40"
+              height="40"
+            />
+          )}
+        </a>
+      </Link>
+
+      <div className="relative sm:absolute right-0 sm:right-8 flex items-center md:gap-8 sm:gap-4 gap-2 sm:pl-0 pl-2 text-primary-500 dark:text-primary-200">
+        <button
+          onClick={() => setTheme(isDark() ? "light" : "dark")}
+          className="p-1 bg-white/80 dark:bg-zinc-700 shadow rounded-full hover:scale-110 hover:shadow-md
+          focus:scale-110 transition-colors"
+          aria-label="Toggle Theme"
+        >
+          {theme === "dark" ? <Sun size={24} /> : <MoonStars size={24} />}
+        </button>
+
+        {user ? (
+          <div className="relative">
+            <button
+              onClick={() => setToggleMenuUser(!toggleMenuUser)}
+              className="p-1 bg-white/80 dark:bg-zinc-700 shadow rounded-full hover:scale-110 hover:shadow-md
+              focus:scale-110 transition-colors"
+            >
+              <div className="hover:scale-110 transition-all">
+                <User size={28} />
+              </div>
+            </button>
+            {toggleMenuUser ? (
+              <ul className="absolute top-12 right-0 flex flex-col gap-4 items-center rounded p-4 bg-white/95 dark:bg-zinc-700 border border-zinc-200 dark:border-zinc-600 scale-100">
+                <li className="hover:border-b border-primary-500 dark:border-primary-200 hover:-mb-px">
+                  <Link href="/profile">
+                    <a>Perfil</a>
+                  </Link>
+                </li>
+                <li className="hover:border-b border-primary-500 dark:border-primary-200 hover:-mb-px">
+                  <Link href="/settings">
+                    <a>Configurações</a>
+                  </Link>
+                </li>
+                <li className="hover:border-b border-primary-500 dark:border-primary-200 hover:-mb-px">
+                  <Link href="/">
+                    <button onClick={() => disconnected()}>Sair</button>
+                  </Link>
+                </li>
+              </ul>
+            ) : (
+              ""
+            )}
+          </div>
+        ) : (
+          <Link href="/login">
+            <a>Entrar</a>
+          </Link>
+        )}
+      </div>
+    </header>
   );
 }
-
-export default Header;
