@@ -1,17 +1,31 @@
 import Head from "next/head";
-import Header from "../components/Header";
-import { useState } from "react";
-import Link from "next/link";
-import { LockSimple, User } from "phosphor-react";
+import Header from "../../components/Header";
 
-import Input from "../components/Input";
-import Button from "../components/Button";
+import Link from "next/link";
+
+import Input from "../../components/Input";
+import Button from "../../components/Button";
+import { useContext, useState } from "react";
+import { LockSimple, User } from "phosphor-react";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleSubmit() {
+  const { singIn } = useContext<any>(AuthContext);
+
+  async function handleSubmit(event: any) {
+    event.preventDefault();
+    const data = {
+      email,
+      password
+    };
+
+    if (data) {
+      await singIn(data);
+    }
+
     return console.log("Enviado");
   }
 

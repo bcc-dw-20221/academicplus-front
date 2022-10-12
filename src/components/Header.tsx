@@ -1,14 +1,16 @@
 import NextLink from "next/link";
 import { PATHS } from "../utils/constants";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { MoonStars, Sun, User } from "phosphor-react";
+import { AuthContext } from "../context/AuthContext";
 
 const hour = new Date().getHours();
 
 export default function Header() {
+  const { userLogged, signOutUser } = useContext<any>(AuthContext);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [user, setUser] = useState("Alexandre");
@@ -45,6 +47,7 @@ export default function Header() {
 
   function disconnected() {
     setUser("");
+    signOutUser();
     console.log("Desconectado");
   }
 

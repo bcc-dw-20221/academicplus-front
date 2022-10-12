@@ -22,6 +22,7 @@
     "lint-staged": "^13.0.3",
     "next": "12.2.5",
     "next-themes": "^0.2.1",
+    "nookies": "^2.5.2",
     "phosphor-react": "^1.4.1",
     "postcss": "^8.4.16",
     "prettier": "^2.7.1",
