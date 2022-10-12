@@ -1,4 +1,4 @@
-import axios from "../config/axios";
+import { instanceAxios } from "../config/axios";
 
 interface address {
   street: string;
@@ -15,7 +15,7 @@ async function registerPerson(
   birthDate: string,
   address: address
 ) {
-  const person = await axios.post("/pre-register", {
+  const person = await instanceAxios.post("/pre-register", {
     name,
     cpf,
     sex,
@@ -28,7 +28,7 @@ async function registerPerson(
 }
 
 async function getAllPreRecords() {
-  const preRecords = await axios.get("/pre-register");
+  const preRecords = await instanceAxios.get("/pre-register");
   return preRecords.data;
 }
 

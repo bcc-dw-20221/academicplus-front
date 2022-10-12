@@ -1,11 +1,11 @@
-import axios from "../config/axios";
+import { instanceAxios } from "../config/axios";
 
 async function registerProfessor(
   personId: string,
   universityId: string,
   qualifications: Array<string>
 ) {
-  const professor = await axios.post("/professors", {
+  const professor = await instanceAxios.post("/professors", {
     personId,
     universityId,
     qualifications

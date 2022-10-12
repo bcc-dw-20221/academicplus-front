@@ -1,4 +1,4 @@
-import axios from "../config/axios";
+import { instanceAxios } from "../config/axios";
 
 async function registerCourse(
   name: string,
@@ -6,7 +6,7 @@ async function registerCourse(
   level: string,
   grau: string
 ) {
-  const courses = await axios.post("/courses", {
+  const courses = await instanceAxios.post("/courses", {
     name,
     hours,
     level,
@@ -16,7 +16,7 @@ async function registerCourse(
 }
 
 async function getAllCourses() {
-  const courses = await axios.get("/courses");
+  const courses = await instanceAxios.get("/courses");
   return courses.data;
 }
 

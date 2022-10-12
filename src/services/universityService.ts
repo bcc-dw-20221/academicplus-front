@@ -1,4 +1,4 @@
-import axios from "../config/axios";
+import { instanceAxios } from "../config/axios";
 
 interface address {
   street: string;
@@ -8,7 +8,7 @@ interface address {
 
 async function registerUniversity(name: string, address: address) {
   console.log(address);
-  const university = await axios.post("/universities", {
+  const university = await instanceAxios.post("/universities", {
     name,
     address
   });
@@ -16,7 +16,7 @@ async function registerUniversity(name: string, address: address) {
 }
 
 async function getAllUniversities() {
-  const universities = await axios.get("/universities");
+  const universities = await instanceAxios.get("/universities");
 
   return universities.data;
 }
