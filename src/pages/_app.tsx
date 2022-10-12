@@ -10,21 +10,24 @@ import "../styles/globals.css";
 import Header from "../components/Header";
 import { theme } from "../styles/theme";
 import { PATHS } from "../utils/constants";
+import { AuthProvider } from "../context/AuthContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   return (
-    <ThemeProvider>
-      <UiThemeProvider theme={theme}>
-        <ChakraProvider>
-          {router.pathname === PATHS.LOGIN ? "" : <Header />}
+    <AuthProvider>
+      <ThemeProvider>
+        <UiThemeProvider theme={theme}>
+          <ChakraProvider>
+            {router.pathname === PATHS.LOGIN ? "" : <Header />}
 
-          <ToastContainer />
-          <Component {...pageProps} />
-        </ChakraProvider>
-      </UiThemeProvider>
-    </ThemeProvider>
+            <ToastContainer />
+            <Component {...pageProps} />
+          </ChakraProvider>
+        </UiThemeProvider>
+      </ThemeProvider>
+    </AuthProvider>
   );
 }
 
