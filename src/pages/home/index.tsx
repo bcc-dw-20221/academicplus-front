@@ -29,8 +29,8 @@ export default function Home() {
       <Head>
         <title>Academic Plus</title>
       </Head>
-      {/*<Flex>
-         <List mt="5rem">
+      <Flex>
+        <List mt="5rem">
           {items.map((item: any) => {
             return (
               <ListItem key={item.id}>
@@ -52,7 +52,7 @@ export default function Home() {
             );
           })}
         </List>
-      </Flex> */}
+      </Flex>
 
       <Main title={`Bem vindo de volta, ${userLogged?.name}!`}>
         <section>
