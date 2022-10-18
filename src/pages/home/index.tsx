@@ -26,6 +26,9 @@ export default function Home() {
 
   return (
     <Box>
+      <Head>
+        <title>Academic Plus</title>
+      </Head>
       {/*<Flex>
          <List mt="5rem">
           {items.map((item: any) => {
@@ -50,6 +53,7 @@ export default function Home() {
           })}
         </List>
       </Flex> */}
+
       <Main title={`Bem vindo de volta, ${userLogged?.name}!`}>
         <section>
           <ul className="flex sm:gap-10 gap-6 flex-wrap justify-center p-1">

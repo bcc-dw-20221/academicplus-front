@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <AuthProvider>
-      <ThemeProvider>
+      <ThemeProvider attribute="class">
         <UiThemeProvider theme={theme}>
           <ChakraProvider>
             {router.pathname === PATHS.LOGIN ? "" : <Header />}
