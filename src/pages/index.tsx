@@ -16,7 +16,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Entre no A+ 📘</title>
+        <title>Academic Plus</title>
       </Head>
     </>
   );

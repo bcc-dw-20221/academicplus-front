@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
       <Head>
-        <title>Entre no A+ 📘</title>
+        <title>Academic Plus</title>
       </Head>
       <ThemeProvider attribute="class">
         <UiThemeProvider theme={theme}>
