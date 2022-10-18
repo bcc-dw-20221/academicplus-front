@@ -29,7 +29,7 @@ export default function Home() {
       <Head>
         <title>Academic Plus</title>
       </Head>
-      <Flex>
+      {/* <Flex>
         <List mt="5rem">
           {items.map((item: any) => {
             return (
@@ -52,7 +52,7 @@ export default function Home() {
             );
           })}
         </List>
-      </Flex>
+      </Flex> */}
 
       <Main title={`Bem vindo de volta, ${userLogged?.name}!`}>
         <section>
