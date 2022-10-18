@@ -1,4 +1,4 @@
-import { instanceAxios } from "../config/axios";
+import { instanceAxios } from "./axiosService";
 
 interface address {
   street: string;

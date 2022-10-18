@@ -24,7 +24,7 @@ import { Button, Container, Flex, Icon } from "@chakra-ui/react";
 import { RiAddLine, RiDeleteBinLine, RiPencilLine } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import { cellValue } from "../../utils/utilsForTable";
-import axios from "../../config/axios";
+import axios from "../../services/axiosService";
 export default function University(prop: any) {
   return (
     <Container gap="1rem">

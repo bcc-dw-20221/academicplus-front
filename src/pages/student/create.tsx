@@ -16,7 +16,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
 import Router from "next/router";
-import { instanceAxios } from "../../config/axios";
+import { instanceAxios } from "../../services/axiosService";
 import { getAllCourses } from "../../services/coursesService";
 import { registerStudent } from "../../services/studentService";
 import { getAllPreRecords } from "../../services/preRegisterService";

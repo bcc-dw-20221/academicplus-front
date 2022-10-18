@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import parseJwt from "../utils/parseJwt";
 import axios from "axios";
-import { instanceAxios } from "../config/axios";
+import { instanceAxios } from "../services/axiosService";
 import { singOut } from "../utils/singOut";
 const AuthContext = createContext({});
 

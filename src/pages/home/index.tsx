@@ -9,7 +9,7 @@ import CardItem from "../../components/CardItem";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import Main from "../../components/Main";
-import { options } from "../../db/itensAluno";
+import { options } from "../../utils/itemsHome";
 import { AuthContext } from "../../context/AuthContext";
 import { parseCookies } from "nookies";
 
@@ -26,8 +26,8 @@ export default function Home() {
 
   return (
     <Box>
-      <Flex>
-        <List mt="5rem">
+      {/*<Flex>
+         <List mt="5rem">
           {items.map((item: any) => {
             return (
               <ListItem key={item.id}>
@@ -49,7 +49,7 @@ export default function Home() {
             );
           })}
         </List>
-      </Flex>
+      </Flex> */}
       <Main title={`Bem vindo de volta, ${userLogged?.name}!`}>
         <section>
           <ul className="flex sm:gap-10 gap-6 flex-wrap justify-center p-1">
