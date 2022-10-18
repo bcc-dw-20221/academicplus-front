@@ -11,12 +11,16 @@ import Header from "../components/Header";
 import { theme } from "../styles/theme";
 import { PATHS } from "../utils/constants";
 import { AuthProvider } from "../context/AuthContext";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   return (
     <AuthProvider>
+      <Head>
+        <title>Entre no A+ 📘</title>
+      </Head>
       <ThemeProvider attribute="class">
         <UiThemeProvider theme={theme}>
           <ChakraProvider>

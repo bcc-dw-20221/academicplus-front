@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Head from "next/head";
 
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -12,7 +13,13 @@ const Home: NextPage = () => {
     router.push(PATHS.HOME);
   }, [router]);
 
-  return <></>;
+  return (
+    <>
+      <Head>
+        <title>Entre no A+ 📘</title>
+      </Head>
+    </>
+  );
 };
 
 export default Home;
