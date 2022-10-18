@@ -1,5 +1,3 @@
-import NextLink from "next/link";
-import { PATHS } from "../utils/constants";
 import { useTheme } from "next-themes";
 import { useContext, useEffect, useState } from "react";
 import Link from "next/link";
