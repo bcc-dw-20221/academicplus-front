@@ -61,10 +61,10 @@ function AuthProvider({ children }: any) {
       ] = `Bearer ${token}`;
 
       router.push("/");
-    } catch (err) {
-      // toast.error(err.response.data.message, {
-      //   autoClose: 2000
-      // });
+    } catch (err: any) {
+      toast.error(err.response.data.error, {
+        autoClose: 2000
+      });
     }
   }
 

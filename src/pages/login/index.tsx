@@ -8,6 +8,7 @@ import Button from "../../components/Button";
 import { useContext, useState } from "react";
 import { LockSimple, User } from "phosphor-react";
 import { AuthContext } from "../../context/AuthContext";
+import { toast } from "react-toastify";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -17,13 +18,19 @@ export default function Login() {
 
   async function handleSubmit(event: any) {
     event.preventDefault();
-    const data = {
-      email,
-      password
-    };
+    try {
+      const data = {
+        email,
+        password
+      };
 
-    if (data) {
-      await singIn(data);
+      if (data) {
+        await singIn(data);
+      }
+    } catch (error: any) {
+      toast.error(error, {
+        autoClose: 2000
+      });
     }
 
     return console.log("Enviado");
