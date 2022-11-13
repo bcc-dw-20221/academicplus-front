@@ -17,8 +17,9 @@ interface SignInProps {
 function AuthProvider({ children }: any) {
   const [userLogged, setUserLogged] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const isAuthenticated = !!userLogged;
   const router = useRouter();
+
+  const isAuthenticated = !!userLogged;
   const urlApiLogin = "https://share-blog-api.herokuapp.com/";
 
   useEffect(() => {
