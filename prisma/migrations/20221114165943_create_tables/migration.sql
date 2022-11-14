@@ -4,6 +4,7 @@ CREATE TABLE "User" (
     "type" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "cpf" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
     "sex" TEXT NOT NULL,
     "motherName" TEXT NOT NULL,
     "email" TEXT NOT NULL,
