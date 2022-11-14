@@ -10,18 +10,22 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model PersonalInformation {
   id String @id @default(uuid())
 
-  type       String
-  name       String
-  cpf        String
-  password   String
-  sex        String
-  motherName String
-  email      String
-  birthDate  String
-  address    Address[]
+  type            String
+  name            String
+  cpf             String
+  password        String
+  sex             String
+  motherName      String
+  email           String
+  birthDate       String
+  address         Address[]
+  Coordinator     Coordinator[]
+  TeachingManager TeachingManager[]
+  Teacher         Teacher[]
+  Student         Student[]
 }
 
 model Address {
@@ -32,5 +36,39 @@ model Address {
   number     String
   complement String?
 
-  id User @relation(fields: [idUser], references: [id])
+  id PersonalInformation @relation(fields: [idUser], references: [id])
+}
+
+model Coordinator {
+  personalInformationId String @id
+
+  personalInformation PersonalInformation @relation(fields: [personalInformationId], references: [id])
+}
+
+model TeachingManager {
+  personalInformationId String @id
+
+  personalInformation PersonalInformation @relation(fields: [personalInformationId], references: [id])
+}
+
+model Teacher {
+  personalInformationId String    @id
+  subjectsOwner         Subject[]
+
+  personalInformation PersonalInformation @relation(fields: [personalInformationId], references: [id])
+}
+
+model Student {
+  personalInformationId String    @id
+  subjects              Subject[]
+
+  personalInformation PersonalInformation @relation(fields: [personalInformationId], references: [id])
+}
+
+model Subject {
+  id        String    @id @default(uuid())
+  teacherId String
+  students  Student[]
+
+  owner Teacher @relation(fields: [teacherId], references: [personalInformationId])
 }

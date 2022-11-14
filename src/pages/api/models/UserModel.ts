@@ -1,8 +1,7 @@
 type TypeType = ["student" | "teacher" | "education_manager" | "coordinator"];
 
-export interface UserModel {
+export interface PersonalInformationModel {
   id?: string;
-  type: "student" | "teacher" | "education_manager" | "coordinator";
   name: string;
   cpf: string;
   sex: "M" | "F" | "O";
