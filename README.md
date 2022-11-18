@@ -1,5 +1,5 @@
 
-![imagem](public\LogoAcademicPlus.png)
+![imagem](https://github.com/bcc-dw-20221/academicplus-front/blob/development/public/LogoAcademicPlus.png)
 
 # Academic Plus - Frontend
  
