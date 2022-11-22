@@ -20,19 +20,21 @@ export function ProvisionalPermission() {
 
   const [toggleMenuPermission, setToggleMenuPermission] = useState(false);
   return (
+    <>
+    {user ? 
     <div className="absolute top-3 left-2">
       <div className="relative">
         <button
           onClick={() => setToggleMenuPermission(!toggleMenuPermission)}
           className="bg-primary-500 text-zinc-50 p-2 rounded-full"
-        >
+          >
           <IdentificationBadge size={32} />
         </button>
         {toggleMenuPermission ? (
           <ul
-            onMouseLeave={() => setToggleMenuPermission(false)}
+          onMouseLeave={() => setToggleMenuPermission(false)}
             className="absolute top-0 left-14 p-2 bg-primary-500 text-zinc-50 font-medium rounded shadow-md border-2 border-primary-400/50 whitespace-nowrap"
-          >
+            >
             <li>
               <button onClick={() => handleTogglePermission("student")}>
                 Aluno
@@ -61,5 +63,8 @@ export function ProvisionalPermission() {
         )}
       </div>
     </div>
+  : ""  
+  }
+    </>
   );
 }
