@@ -5,20 +5,12 @@ import CardItem from "../../components/CardItem";
 import Footer from "../../components/Footer";
 
 import Main from "../../components/Main";
-import { options } from "../../utils/itemsHome";
+import { options, cardsList } from "../../utils/itemsHome";
 import { AuthContext } from "../../context/AuthContext";
 import { parseCookies } from "nookies";
 
 export default function Home() {
   const { user } = useContext<any>(AuthContext);
-
-  // const items = [
-  //   { id: 1, title: "University", path: PATHS.UNIVERSITY },
-  //   { id: 2, title: "Pre-Registro", path: PATHS.PRE_REGISTER },
-  //   { id: 3, title: "Professor", path: PATHS.PROFESSOR },
-  //   { id: 4, title: "Cursos", path: PATHS.COURSES },
-  //   { id: 5, title: "Aluno", path: PATHS.STUDENT }
-  // ];
 
   return (
     <>
@@ -28,7 +20,35 @@ export default function Home() {
       <Main title={`Bem vindo de volta, ${user?.name}!`}>
         <section>
           <ul className="flex sm:gap-10 gap-6 flex-wrap justify-center p-1">
-            {options.map(e => (
+            {
+            // options.map(e => (
+              user.permission === "student" ? cardsList["student"].map(e => (
+                <CardItem
+                  key={e.title}
+                  title={e.title}
+                  img={e.img}
+                  rote={e.rote}
+                  alt={e.rote}
+                />
+              )) : user.permission === "teacher" ? cardsList["teacher"].map(e => (
+                <CardItem
+                  key={e.title}
+                  title={e.title}
+                  img={e.img}
+                  rote={e.rote}
+                  alt={e.rote}
+                />
+              )) : user.permission === "coordinator" ? 
+              cardsList["coordinator"].map(e => (
+                <CardItem
+                  key={e.title}
+                  title={e.title}
+                  img={e.img}
+                  rote={e.rote}
+                  alt={e.rote}
+                />
+              )) : 
+              cardsList["education_manager"].map(e => (
               <CardItem
                 key={e.title}
                 title={e.title}
