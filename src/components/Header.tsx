@@ -4,14 +4,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { MoonStars, Sun, User } from "phosphor-react";
 import { AuthContext } from "../context/AuthContext";
+import { ProvisionalPermission } from "./ProvisionalPermission";
 
 const hour = new Date().getHours();
 
 export default function Header() {
-  const { userLogged, signOutUser } = useContext<any>(AuthContext);
+  const { user, signOut, setUser } = useContext<any>(AuthContext);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const [user, setUser] = useState("Alexandre");
   const [toggleMenuUser, setToggleMenuUser] = useState(false);
 
   useEffect(() => {
@@ -45,15 +45,16 @@ export default function Header() {
 
   function disconnected() {
     setUser("");
-    signOutUser();
+    signOut();
     console.log("Desconectado");
   }
 
   return (
     <header
-      className={`card-glass fixed top-0 w-screen flex justify-between sm:justify-center items-center p-4 shadow-md border-b-2
+      className={`fixed top-0 w-screen flex justify-between sm:justify-center items-center p-4 shadow-md border-b-2
     bg-white dark:bg-black border-zinc-100 dark:border-zinc-800 z-10`}
     >
+      <ProvisionalPermission />
       <Link href="/">
         <a>
           {isMinWidth() ? (

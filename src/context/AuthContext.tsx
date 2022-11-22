@@ -7,32 +7,37 @@ import parseJwt from "../utils/parseJwt";
 import axios from "axios";
 import { instanceAxios } from "../services/axiosService";
 import { singOut } from "../utils/singOut";
-const AuthContext = createContext({});
 
 interface SignInProps {
   email: string;
   password: string;
 }
 
+const AuthContext = createContext({});
+
 function AuthProvider({ children }: any) {
-  const [userLogged, setUserLogged] = useState();
+  const [user, setUser] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const isAuthenticated = !!userLogged;
+  const [authenticated, setAuthenticated] = useState(false);
   const router = useRouter();
   const urlApiLogin = "https://share-blog-api.herokuapp.com/";
+
+  console.log(user);
 
   useEffect(() => {
     const { "nextauth.token": token } = parseCookies();
 
     if (token) {
+      const userCache = parseJwt(token);
       setIsLoading(true);
-      setUserLogged(parseJwt(token));
+      setUser(userCache);
+      setUser((prevState: any) => ({ ...prevState, name: "Alexandre" }));
     }
   }, []);
 
-  const signOutUser = () => {
+  const signOut = () => {
     setIsLoading(false);
-    setUserLogged(undefined);
+    setUser(undefined);
     singOut();
   };
 
@@ -53,7 +58,7 @@ function AuthProvider({ children }: any) {
         path: "/"
       });
 
-      setUserLogged(parseJwt(token));
+      setUser(parseJwt(token));
 
       //atulizando o header
       instanceAxios.defaults.headers.common[
@@ -69,9 +74,7 @@ function AuthProvider({ children }: any) {
   }
 
   return (
-    <AuthContext.Provider
-      value={{ singIn, userLogged, isLoading, signOutUser }}
-    >
+    <AuthContext.Provider value={{ singIn, user, setUser, isLoading, signOut }}>
       {children}
     </AuthContext.Provider>
   );
