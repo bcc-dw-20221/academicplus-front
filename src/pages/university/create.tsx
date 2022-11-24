@@ -36,7 +36,7 @@ export default function CreateUniversity() {
     try {
       if (name && address.street && address.number && address.zipCode) {
         await registerUniversity(name, address);
-        toast.success(TEXTS.REGISTER_SUCESS, {
+        toast.success(TEXTS.REGISTER_SUCCESS, {
           autoClose: 2000
         });
       } else {

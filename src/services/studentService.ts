@@ -1,7 +1,7 @@
-import { instanceapi } from "./api";
+import { api } from "./axios";
 
 async function registerStudent(personId: string, courseId: string) {
-  const student = await instanceapi.post("/students/enrollments", {
+  const student = await api.post("/students/enrollments", {
     personId,
     courseId
   });

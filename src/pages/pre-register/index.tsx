@@ -24,7 +24,7 @@ import { Button, Container, Flex, Icon } from "@chakra-ui/react";
 import { RiAddLine, RiDeleteBinLine, RiPencilLine } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import { cellValue } from "../../utils/utilsForTable";
-import { instanceapi } from "../../services/api";
+import { api } from "../../services/axios";
 export default function University(prop: any) {
   return (
     <Container gap="1rem">
@@ -109,7 +109,7 @@ export default function University(prop: any) {
 //nesse caso o next faz um get na minha api antes de rendezirar a pagina, ou seja
 //antes de aparecer qualquer tipo de interface
 export async function getServerSideProps() {
-  const response = await instanceapi.get("/pre-register");
+  const response = await api.get("/pre-register");
   console.log(response.data);
   return {
     props: {

@@ -1,25 +1,96 @@
-import type { NextPage } from "next";
+import React, { useContext } from "react";
 import Head from "next/head";
+import { parseCookies } from "nookies";
 
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { cardsList } from "../utils/itemsHome";
+import { AuthContext } from "../context/AuthContext";
 
-import { PATHS } from "../utils/constants";
+import Main from "../components/Main";
+import CardItem from "../components/CardItem";
+import Footer from "../components/Footer";
 
-const Home: NextPage = () => {
-  const router = useRouter();
-
-  useEffect(() => {
-    router.push(PATHS.HOME);
-  }, [router]);
+export default function Home() {
+  const { user } = useContext<any>(AuthContext);
 
   return (
     <>
       <Head>
         <title>Academic Plus</title>
       </Head>
+      <Main title={`Bem vindo de volta, ${user?.name}!`}>
+        <section>
+          <ul className="flex sm:gap-10 gap-6 flex-wrap justify-center p-1">
+            {
+              // options.map(e => (
+              user.permission === "student"
+                ? cardsList["student"].map(e => (
+                    <CardItem
+                      key={e.title}
+                      title={e.title}
+                      img={e.img}
+                      rote={e.rote}
+                      alt={e.rote}
+                    />
+                  ))
+                : user.permission === "teacher"
+                ? cardsList["teacher"].map(e => (
+                    <CardItem
+                      key={e.title}
+                      title={e.title}
+                      img={e.img}
+                      rote={e.rote}
+                      alt={e.rote}
+                    />
+                  ))
+                : user.permission === "coordinator"
+                ? cardsList["coordinator"].map(e => (
+                    <CardItem
+                      key={e.title}
+                      title={e.title}
+                      img={e.img}
+                      rote={e.rote}
+                      alt={e.rote}
+                    />
+                  ))
+                : cardsList["education_manager"].map(e => (
+                    <CardItem
+                      key={e.title}
+                      title={e.title}
+                      img={e.img}
+                      rote={e.rote}
+                      alt={e.rote}
+                    />
+                  ))
+            }
+          </ul>
+        </section>
+      </Main>
+      <Footer />
     </>
   );
-};
+}
 
-export default Home;
+//método executado no lado do servidor, quando o user acessar a página;
+//nesse caso o next faz um get na minha api antes de rendezirar a pagina, ou seja
+//antes de aparecer qualquer tipo de interface
+export async function getServerSideProps(context: any) {
+  const cookies = parseCookies(context);
+
+  const token = cookies["nextauth.token"];
+
+  // console.log(token);
+  //se não existir o token, ele redireciona para a pag index.
+  if (!token) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false
+      }
+    };
+  }
+  return {
+    props: {}
+  };
+  // const dataPreRecords = await instanceapi.get("/pre-register");
+  // const dataCourses = await instanceapi.get("/courses");
+}

@@ -4,11 +4,9 @@ import {
   Box,
   Button,
   FormControl,
-  FormControlLabel,
   FormLabel,
   MenuItem,
   Stack,
-  Switch,
   TextField
 } from "@mui/material";
 import { Text, Button as ButtonChakra } from "@chakra-ui/react";
@@ -16,11 +14,10 @@ import Container from "@mui/material/Container";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
-import { registerUniversity } from "../../services/universityService";
 
 import { toast } from "react-toastify";
-import { PATHS, TEXTS } from "../../utils/constants";
 import Router from "next/router";
+import { PATHS, TEXTS } from "../../utils/constants";
 import { registerPerson } from "../../services/preRegisterService";
 
 export default function CreatePreRegister() {
@@ -59,7 +56,7 @@ export default function CreatePreRegister() {
           birthDate,
           address
         );
-        toast.success(TEXTS.REGISTER_SUCESS, {
+        toast.success(TEXTS.REGISTER_SUCCESS, {
           autoClose: 2000
         });
       }

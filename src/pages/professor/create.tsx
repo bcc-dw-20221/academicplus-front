@@ -61,7 +61,7 @@ export default function CreateProfessor() {
             universityId[0].id.value,
             qualifications
           );
-          toast.success(TEXTS.REGISTER_SUCESS, {
+          toast.success(TEXTS.REGISTER_SUCCESS, {
             autoClose: 2000
           });
         }

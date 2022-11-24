@@ -1,4 +1,4 @@
-import { instanceapi } from "./api";
+import { api } from "./axios";
 
 interface address {
   street: string;
@@ -15,7 +15,7 @@ async function registerPerson(
   birthDate: string,
   address: address
 ) {
-  const person = await instanceapi.post("/pre-register", {
+  const person = await api.post("/pre-register", {
     name,
     cpf,
     sex,
@@ -28,7 +28,7 @@ async function registerPerson(
 }
 
 async function getAllPreRecords() {
-  const preRecords = await instanceapi.get("/pre-register");
+  const preRecords = await api.get("/pre-register");
   return preRecords.data;
 }
 

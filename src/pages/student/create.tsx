@@ -16,7 +16,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
 import Router from "next/router";
-import { instanceapi } from "../../services/api";
+import { api } from "../../services/axios";
 import { getAllCourses } from "../../services/coursesService";
 import { registerStudent } from "../../services/studentService";
 import { getAllPreRecords } from "../../services/preRegisterService";
@@ -41,7 +41,7 @@ export default function CreateStudent(prop: any) {
       if (cpfExists) {
         if (CPF && courseId[0].id.value) {
           await registerStudent(CPF, courseId[0].id.value);
-          toast.success(TEXTS.REGISTER_SUCESS, {
+          toast.success(TEXTS.REGISTER_SUCCESS, {
             autoClose: 2000
           });
         }
@@ -134,8 +134,8 @@ export default function CreateStudent(prop: any) {
 //nesse caso o next faz um get na minha api antes de rendezirar a pagina, ou seja
 //antes de aparecer qualquer tipo de interface
 export async function getServerSideProps() {
-  const dataPreRecords = await instanceapi.get("/pre-register");
-  const dataCourses = await instanceapi.get("/courses");
+  const dataPreRecords = await api.get("/pre-register");
+  const dataCourses = await api.get("/courses");
 
   return {
     props: {

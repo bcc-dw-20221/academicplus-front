@@ -1,11 +1,11 @@
 const TEXTS = {
-  REGISTER_SUCESS: "Cadastrado com sucesso!",
+  REGISTER_SUCCESS: "Cadastrado com sucesso!",
   ERROR: "Verifique os dados e tente novamente!",
   CPF_INVALID: "CPF inválido!"
 };
 
 const PATHS = {
-  HOME: "/home",
+  HOME: "/",
   LOGIN: "/login",
   UNIVERSITY: "/university",
   REGISTER_UNIVERSITY: "/university/create",

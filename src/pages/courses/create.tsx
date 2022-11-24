@@ -1,14 +1,13 @@
-// import { useContext, useEffect } from 'react';
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import Router from "next/router";
+import { toast } from "react-toastify";
 import {
   Box,
   Button,
   FormControl,
-  FormControlLabel,
   FormLabel,
   MenuItem,
   Stack,
-  Switch,
   TextField
 } from "@mui/material";
 import { Text, Button as ButtonChakra } from "@chakra-ui/react";
@@ -16,10 +15,9 @@ import Container from "@mui/material/Container";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
+
 import { registerCourse } from "../../services/coursesService";
-import { toast } from "react-toastify";
 import { PATHS, TEXTS } from "../../utils/constants";
-import Router from "next/router";
 
 export default function CreateUniversity() {
   const [name, setName] = useState("");
@@ -32,7 +30,7 @@ export default function CreateUniversity() {
     try {
       if (name && hours && level && grade) {
         await registerCourse(name, hours, level, grade);
-        toast.success(TEXTS.REGISTER_SUCESS, {
+        toast.success(TEXTS.REGISTER_SUCCESS, {
           autoClose: 2000
         });
         Router.push(PATHS.COURSES);
@@ -92,7 +90,7 @@ export default function CreateUniversity() {
 
                         onChange={e => setLevel(e.target.value.toUpperCase())}
                       >
-                        <MenuItem value={"Tecnico"}>Tecnico</MenuItem>
+                        <MenuItem value={"Tecnico"}>Técnico</MenuItem>
                         <MenuItem value={"Bacharel"}>Bacharel</MenuItem>
                         <MenuItem value={"Licenciatura"}>Licenciatura</MenuItem>
                       </TextField>
