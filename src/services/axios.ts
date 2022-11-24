@@ -3,11 +3,11 @@ import { parseCookies } from "nookies";
 
 const cookies = parseCookies();
 
-const instanceAxios = axios.create({
+const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
   headers: {
     Authorization: `Bearer ${cookies["nextauth.token"]}`
   }
 });
 
-export { instanceAxios };
+export { api };

@@ -16,7 +16,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
 import Router from "next/router";
-import { instanceAxios } from "../../services/axiosService";
+import { instanceapi } from "../../services/api";
 import { getAllCourses } from "../../services/coursesService";
 import { registerStudent } from "../../services/studentService";
 import { getAllPreRecords } from "../../services/preRegisterService";
@@ -134,8 +134,8 @@ export default function CreateStudent(prop: any) {
 //nesse caso o next faz um get na minha api antes de rendezirar a pagina, ou seja
 //antes de aparecer qualquer tipo de interface
 export async function getServerSideProps() {
-  const dataPreRecords = await instanceAxios.get("/pre-register");
-  const dataCourses = await instanceAxios.get("/courses");
+  const dataPreRecords = await instanceapi.get("/pre-register");
+  const dataCourses = await instanceapi.get("/courses");
 
   return {
     props: {

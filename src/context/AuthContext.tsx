@@ -1,12 +1,13 @@
 import { createContext, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+
 import { setCookie, parseCookies, destroyCookie } from "nookies";
 
-import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import parseJwt from "../utils/parseJwt";
-import axios from "axios";
-import { instanceAxios } from "../services/axiosService";
+import { api } from "../services/axios";
 import { singOut } from "../utils/singOut";
+import { env } from "process";
 
 interface SignInProps {
   email: string;
@@ -20,7 +21,8 @@ function AuthProvider({ children }: any) {
   const [isLoading, setIsLoading] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
   const router = useRouter();
-  const urlApiLogin = "https://share-blog-api.herokuapp.com/";
+
+  console.log(process.env.API_BASEURL);
 
   console.log(user);
 
@@ -28,10 +30,15 @@ function AuthProvider({ children }: any) {
     const { "nextauth.token": token } = parseCookies();
 
     if (token) {
-      const userCache = parseJwt(token);
+      const userCookies = parseJwt(token);
+
+      try {
+      } catch (error) {}
+
       setIsLoading(true);
-      setUser(userCache);
-      setUser((prevState: any) => ({ ...prevState, name: "Alexandre" }));
+      setUser(userCookies);
+
+      return setUser((prevState: any) => ({ ...prevState, name: "Alexandre" }));
     }
   }, []);
 
@@ -43,7 +50,7 @@ function AuthProvider({ children }: any) {
 
   async function singIn({ email, password }: SignInProps) {
     try {
-      const res = await axios.post(urlApiLogin + "token", {
+      const res = await api.post("http://localhost:8080/", {
         email,
         password
       });
@@ -60,10 +67,7 @@ function AuthProvider({ children }: any) {
 
       setUser(parseJwt(token));
 
-      //atulizando o header
-      instanceAxios.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${token}`;
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
       router.push("/");
     } catch (err: any) {

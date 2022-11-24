@@ -1,4 +1,4 @@
-import { instanceAxios } from "./axiosService";
+import { instanceapi } from "./api";
 
 interface address {
   street: string;
@@ -8,7 +8,7 @@ interface address {
 
 async function registerUniversity(name: string, address: address) {
   console.log(address);
-  const university = await instanceAxios.post("/universities", {
+  const university = await instanceapi.post("/universities", {
     name,
     address
   });
@@ -16,7 +16,7 @@ async function registerUniversity(name: string, address: address) {
 }
 
 async function getAllUniversities() {
-  const universities = await instanceAxios.get("/universities");
+  const universities = await instanceapi.get("/universities");
 
   return universities.data;
 }

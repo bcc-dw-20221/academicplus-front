@@ -86,6 +86,6 @@ export async function getServerSideProps(context: any) {
   return {
     props: {}
   };
-  // const dataPreRecords = await instanceAxios.get("/pre-register");
-  // const dataCourses = await instanceAxios.get("/courses");
+  // const dataPreRecords = await instanceapi.get("/pre-register");
+  // const dataCourses = await instanceapi.get("/courses");
 }

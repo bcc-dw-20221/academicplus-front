@@ -1,4 +1,4 @@
-import { instanceAxios } from "./axiosService";
+import { instanceapi } from "./api";
 
 async function registerCourse(
   name: string,
@@ -6,7 +6,7 @@ async function registerCourse(
   level: string,
   grau: string
 ) {
-  const courses = await instanceAxios.post("/courses", {
+  const courses = await instanceapi.post("/courses", {
     name,
     hours,
     level,
@@ -16,7 +16,7 @@ async function registerCourse(
 }
 
 async function getAllCourses() {
-  const courses = await instanceAxios.get("/courses");
+  const courses = await instanceapi.get("/courses");
   return courses.data;
 }
 
