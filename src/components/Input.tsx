@@ -19,10 +19,10 @@ export default function Input({
   Icon,
   setValue,
   messageError,
-  required = true,
+  required = true
 }: IInputProps) {
   const checkEmail = value.search(/\S+@\S+\.\S+/);
-  const checkPassword = value.length < 8;
+  const checkPassword = value.length < 6;
   const classDefault =
     "hover:border-primary-500 dark:hover:border-primary-200 focus:border-primary-500 dark:focus:border-primary-200 dark:border-zinc-500";
   const success = "border-success-hover hover:none focus:none";
@@ -58,7 +58,7 @@ export default function Input({
         name={id}
         type={type}
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={e => setValue(e.target.value)}
         className={`min-w-[200px] max-h-[90%] p-2 pl-11 bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-50 border-b-2 border-zinc-200 rounded transition-colors duration-200s
         ${checkedType}
         focus:outline-none`}
