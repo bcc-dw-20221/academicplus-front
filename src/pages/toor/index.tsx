@@ -4,36 +4,29 @@ import Link from "next/link";
 import { toast } from "react-toastify";
 import { LockSimple, User } from "phosphor-react";
 
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext, InitialValues } from "../../context/AuthContext";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
 import Input from "../../components/Input";
 
-export default function Login() {
-  const [email, setEmail] = useState("");
+export default function Root() {
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const { singIn } = useContext<any>(AuthContext);
+  const { signIn } = useContext<InitialValues>(AuthContext);
 
   async function handleSubmit(e: any) {
     e.preventDefault();
 
-    try {
-      const data = {
-        email,
-        password
-      };
-
-      if (data) {
-        await singIn(data);
+    if (username && password) {
+      try {
+        signIn({ username, password });
+      } catch (error: any) {
+        toast.error(error, {
+          autoClose: 3000
+        });
       }
-    } catch (error: any) {
-      toast.error(error, {
-        autoClose: 2000
-      });
     }
-
-    return console.log("Enviado");
   }
 
   return (
@@ -66,15 +59,15 @@ export default function Login() {
             sm:border-b-8 sm:border-r-4 sm:rounded-2xl sm:shadow-2xl
             sm:dark:border-zinc-800"
           >
-            <h1 className="text-5xl font-semibold text-center">Login</h1>
+            <h1 className="text-5xl font-semibold text-center">Admin</h1>
 
             <Input
-              key="email"
-              type="email"
-              label="Email"
+              key="username"
+              type="text"
+              label="Usuário"
               Icon={<User weight="bold" />}
-              value={email}
-              setValue={setEmail}
+              value={username}
+              setValue={setUsername}
             />
 
             <Input
