@@ -79,26 +79,7 @@ export default function Root() {
               setValue={setPassword}
             />
 
-            <small className="-mt-4 mb-4 text-left text-sm font-medium">
-              Esqueceu a senha?
-              <Link href="/">
-                <a
-                  className="hover:text-primary-600
-                  dark:hover:text-primary-100 focus:outline-none
-                focus:text-primary-600
-                dark:focus:text-primary-100
-                focus:border-b-2
-                focus:border-b-primary-600
-                dark:focus:border-primary-200
-                transition  "
-                >
-                  {" "}
-                  Clique aqui
-                </a>
-              </Link>
-            </small>
-
-            <Button text="Entrar" type="submit" />
+            <Button className="mt-6" text="Entrar" type="submit" />
           </form>
         </main>
       </div>
