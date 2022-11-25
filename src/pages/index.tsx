@@ -12,6 +12,8 @@ import Footer from "../components/Footer";
 export default function Home() {
   const { user } = useContext<any>(AuthContext);
 
+  console.log(user.permission[0]);
+
   return (
     <>
       <Head>
@@ -22,8 +24,8 @@ export default function Home() {
           <ul className="flex sm:gap-10 gap-6 flex-wrap justify-center p-1">
             {
               // options.map(e => (
-              user.permission === "student"
-                ? cardsList["student"].map(e => (
+              user.permission[0] === "ROLE_STUDENT"
+                ? cardsList.student.map(e => (
                     <CardItem
                       key={e.title}
                       title={e.title}
@@ -32,8 +34,8 @@ export default function Home() {
                       alt={e.rote}
                     />
                   ))
-                : user.permission === "teacher"
-                ? cardsList["teacher"].map(e => (
+                : user.permission[0] === "ROLE_PROFESSOR"
+                ? cardsList.teacher.map(e => (
                     <CardItem
                       key={e.title}
                       title={e.title}
@@ -42,8 +44,8 @@ export default function Home() {
                       alt={e.rote}
                     />
                   ))
-                : user.permission === "coordinator"
-                ? cardsList["coordinator"].map(e => (
+                : user.permission[0] === "ROLE_ADMIN"
+                ? cardsList.education_manager.map(e => (
                     <CardItem
                       key={e.title}
                       title={e.title}
@@ -52,7 +54,8 @@ export default function Home() {
                       alt={e.rote}
                     />
                   ))
-                : cardsList["education_manager"].map(e => (
+                : user.permission[0] === "ROLE_ROOT"
+                ? cardsList.coordinator.map(e => (
                     <CardItem
                       key={e.title}
                       title={e.title}
@@ -61,6 +64,7 @@ export default function Home() {
                       alt={e.rote}
                     />
                   ))
+                : ""
             }
           </ul>
         </section>
