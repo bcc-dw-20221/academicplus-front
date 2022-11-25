@@ -13,7 +13,7 @@ export default function CardItem({
   title,
   img,
   alt,
-  rote = "/",
+  rote = "/"
 }: CardItemProps) {
   return (
     <li className="flex justify-center sm:w-fit w-full sm:mb-6 mb-0 group">
@@ -26,7 +26,7 @@ export default function CardItem({
           border dark:border-zinc-600 shadow-md hover:shadow-xl focus:shadow-xl rounded-lg 
         hover:scale-105 focus:scale-105 outline-none focus:outline-zinc-300 dark:focus:outline-zinc-500 transition-all duration-200 group"
         >
-          <div className="sm:group-hover:scale-125 group-hover:scale-105  sm:group-focus:scale-125 group-focus:scale-110 transition-transform duration-300">
+          <div className="sm:group-hover:scale-125 group-hover:scale-110  sm:group-focus:scale-125 group-focus:scale-110 transition-all duration-500 delay-75">
             <Image src={img} alt={alt} width="183px" height="96px" />
           </div>
           <h2 className="text-xl text-center font-semibold px-2 transition-all ">
