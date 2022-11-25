@@ -9,7 +9,7 @@ import { ProvisionalPermission } from "./ProvisionalPermission";
 const hour = new Date().getHours();
 
 export default function Header() {
-  const { user, signOut, setUser } = useContext<any>(AuthContext);
+  const { authenticated, signOut, setUser } = useContext(AuthContext);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [toggleMenuUser, setToggleMenuUser] = useState(false);
@@ -44,9 +44,7 @@ export default function Header() {
   };
 
   function disconnected() {
-    setUser("");
     signOut();
-    console.log("Desconectado");
   }
 
   return (
@@ -85,7 +83,7 @@ export default function Header() {
           {theme === "dark" ? <Sun size={24} /> : <MoonStars size={24} />}
         </button>
 
-        {user ? (
+        {authenticated ? (
           <div className="relative">
             <button
               onClick={() => setToggleMenuUser(!toggleMenuUser)}
