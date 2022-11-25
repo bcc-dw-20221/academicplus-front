@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 import { setCookie, parseCookies, destroyCookie } from "nookies";
 
@@ -7,10 +7,6 @@ import { UserModel } from "../model/UserModel";
 import { toast } from "react-toastify";
 import parseJwt from "../utils/parseJwt";
 import { api } from "../services/axios";
-
-interface AuthProviderProps {
-  children: ReactNode;
-}
 interface SignInProps {
   username: string;
   password: string;
@@ -58,28 +54,29 @@ export function AuthProvider({ children }: any) {
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
-  console.log(process.env.API_BASEURL);
-  console.log(user);
+  // console.log(process.env.API_BASEURL);
 
-  destroyCookie({}, "token");
   useEffect(() => {
     const { "nextauth.token": token } = parseCookies();
-
-    console.log({ token });
 
     if (token) {
       const userCookies = parseJwt(token);
 
-      console.log({ userCookies });
-
+      console.log(userCookies);
       setAuthenticated(true);
-      setUser(userCookies);
 
-      return setUser((prevState: any) => ({ ...prevState, name: "Alexandre" }));
+      setUser({
+        id: "",
+        name: userCookies.sub,
+        username: userCookies.sub,
+        email: "",
+        permission: userCookies.roles
+      });
     }
   }, []);
 
-  const signOut = () => {
+  function signOut() {
+    setAuthenticated(false);
     destroyCookie(undefined, "nextauth.token");
     setUser({
       id: "",
@@ -89,45 +86,50 @@ export function AuthProvider({ children }: any) {
       permission: ""
     });
 
-    setAuthenticated(false);
-    return Router.push("/login");
-  };
+    return;
+  }
 
   async function signIn({ username, password }: SignInProps) {
     try {
-      console.log("Enviado");
       const res = await api.post("/login", {
         username,
         password
       });
-
       console.log("Enviado");
-      console.log(res.status);
-      console.log(res.data);
 
       setAuthenticated(res.status === 200);
-      console.log({ res });
 
-      const { token } = res.data;
+      if (!authenticated) return;
+
+      const { accessToken: token } = res.data;
 
       setCookie(undefined, "nextauth.token", token, {
         //tempo de vida do cookie
-        maxAge: 60 * 60 * 24 * 30, //30 dias
+        maxAge: 60 * 10, // 10 minutes
         //quais caminhos da aplicação vão ter acessos a esses cookies
         //no caso,esse vai ter usado de forma global
         path: "/"
       });
 
-      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      const userCookies = parseJwt(token);
+      console.log({ userCookies, token });
 
-      setUser((prevState: any) => ({ ...prevState, name: "Alexandre" }));
+      setUser({
+        id: "",
+        name: "",
+        username: userCookies.sub,
+        email: "",
+        permission: userCookies.roles
+      });
+
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
       router.push("/");
     } catch (err: any) {
-      console.log(err);
-      // toast.error(err.response.data.error, {
-      //   autoClose: 2000
-      // });
+      // console.log(err.response.data);
+      toast.error("Erro Interno. Tente novamente mais tarde.", {
+        autoClose: 3000
+      });
     }
   }
 
