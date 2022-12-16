@@ -23,6 +23,7 @@ import { getAllPreRecords } from "../../services/preRegisterService";
 
 import { toast } from "react-toastify";
 import { PATHS, TEXTS } from "../../utils/constants";
+import { parseCookies } from "nookies";
 
 export default function CreateStudent(prop: any) {
   const [CPF, setCPF] = useState("");
@@ -53,12 +54,12 @@ export default function CreateStudent(prop: any) {
   };
 
   return (
-    <Container fixed>
+    <Container style={{marginTop: "7rem"}} fixed>
       <Text fontSize="2rem">{`${"Cadastro"} de Aluno`}</Text>
       <Grid container spacing={0}>
         <Grid item lg={12} md={12} xs={12}>
           <Card variant="outlined" sx={{ p: 0 }}>
-            <CardContent sx={{ padding: "30px" }}>
+            <CardContent sx={{ padding: "30px" }}>  
               <form onSubmit={handleSubmit}>
                 {/* <form> */}
                 <Grid container spacing={2}>
@@ -133,10 +134,31 @@ export default function CreateStudent(prop: any) {
 //método executado no lado do servidor, quando o user acessar a página;
 //nesse caso o next faz um get na minha api antes de rendezirar a pagina, ou seja
 //antes de aparecer qualquer tipo de interface
-export async function getServerSideProps() {
-  const dataPreRecords = await api.get("/pre-register");
-  const dataCourses = await api.get("/courses");
+export async function getServerSideProps(context:any) {
+  const cookies = parseCookies(context);
 
+  const token = cookies["nextauth.token"];
+  var axios = require("axios").default;
+
+var options = {
+  method: 'GET',
+  url: 'http://localhost:8080/pre-register',
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+};
+
+var optionsCourses = {
+  method: 'GET',
+  url: 'http://localhost:8080/courses',
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+};
+
+const dataPreRecords = await axios.request(options)
+const dataCourses = await axios.request(optionsCourses)
+  
   return {
     props: {
       preRecords: dataPreRecords.data,

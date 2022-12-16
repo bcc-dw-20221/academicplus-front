@@ -25,7 +25,10 @@ import { RiAddLine, RiDeleteBinLine, RiPencilLine } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import { cellValue } from "../../utils/utilsForTable";
 import { api } from "../../services/axios";
-export default function University(prop: any) {
+import { parseCookies } from "nookies";
+import { getAllPreRecords } from "../../services/preRegisterService";
+export default function University(prop:any) {
+  
   return (
     <Container gap="1rem">
       <Flex>
@@ -49,11 +52,12 @@ export default function University(prop: any) {
       <Button
         fontSize="1.8rem"
         _hover={{ bg: "#4299E1" }}
-        backgroundColor="#63B3ED"
+        bg={"#63B3ED"}
         gap="0.7rem"
         color="white"
         fontWeight="bold"
-        mt="1rem"
+        mt="2rem"
+        mb="2rem"
         ml="0.5rem"
         width="31rem"
         borderRadius="3px 5px 5px 5px"
@@ -108,9 +112,21 @@ export default function University(prop: any) {
 //método executado no lado do servidor, quando o user acessar a página;
 //nesse caso o next faz um get na minha api antes de rendezirar a pagina, ou seja
 //antes de aparecer qualquer tipo de interface
-export async function getServerSideProps() {
-  const response = await api.get("/pre-register");
-  console.log(response.data);
+export async function getServerSideProps(context:any) {
+  const cookies = parseCookies(context);
+
+  const token = cookies["nextauth.token"];
+  var axios = require("axios").default;
+
+var options = {
+  method: 'GET',
+  url: 'http://localhost:8080/pre-register',
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+};
+
+const response = await axios.request(options)
   return {
     props: {
       users: response.data

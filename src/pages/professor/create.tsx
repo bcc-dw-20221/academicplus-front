@@ -79,7 +79,7 @@ export default function CreateProfessor() {
   };
 
   return (
-    <Container fixed>
+    <Container style={{marginTop: "7rem"}} fixed>
       <Text fontSize="2rem">{`${"Cadastro"} de Professor`}</Text>
       <Grid container spacing={0}>
         <Grid item lg={12} md={12} xs={12}>
