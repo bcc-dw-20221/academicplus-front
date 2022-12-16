@@ -52,27 +52,30 @@ export function AuthProvider({ children }: any) {
   });
   const [authenticated, setAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
+  
   const router = useRouter();
   // console.log(process.env.API_BASEURL);
 
   useEffect(() => {
-    const { "nextauth.token": token } = parseCookies();
+    (async () => {
+      const { "nextauth.token": token } = parseCookies();
 
-    if (token) {
-      const userCookies = parseJwt(token);
-
-      console.log(userCookies);
-      setAuthenticated(true);
-
-      setUser({
-        id: "",
-        name: userCookies.sub,
-        username: userCookies.sub,
-        email: "",
-        permission: userCookies.roles
-      });
-    }
+      if (token) {
+        const userCookies = parseJwt(token);
+  
+        console.log(userCookies);
+        setAuthenticated(true);
+        
+        setUser({
+          id: "",
+          name: userCookies.sub,
+          username: userCookies.sub,
+          email: "",
+          permission: userCookies.roles
+        });
+      }
+    })()
+  
   }, []);
 
   function signOut() {
@@ -105,12 +108,12 @@ export function AuthProvider({ children }: any) {
 
       setCookie(undefined, "nextauth.token", token, {
         //tempo de vida do cookie
-        maxAge: 60 * 10, // 10 minutes
+        maxAge:  60 * 60 * 24 * 30  , // 10 minutes
         //quais caminhos da aplicação vão ter acessos a esses cookies
         //no caso,esse vai ter usado de forma global
         path: "/"
       });
-
+     
       const userCookies = parseJwt(token);
       console.log({ userCookies, token });
 
@@ -122,8 +125,8 @@ export function AuthProvider({ children }: any) {
         permission: userCookies.roles
       });
 
-      api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-
+    console.log( api.defaults.headers.common["Authorization"] = `Bearer ${token}`) 
+    api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       router.push("/");
     } catch (err: any) {
       // console.log(err.response.data);

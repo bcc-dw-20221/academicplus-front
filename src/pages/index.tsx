@@ -8,10 +8,11 @@ import { AuthContext } from "../context/AuthContext";
 import Main from "../components/Main";
 import CardItem from "../components/CardItem";
 import Footer from "../components/Footer";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const { user } = useContext<any>(AuthContext);
-
+const router = useRouter();
   console.log(user.permission[0]);
 
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         <title>Academic Plus</title>
       </Head>
       <Main title={`Bem vindo de volta, ${user?.name}!`}>
+       
         <section>
           <ul className="flex sm:gap-10 gap-6 flex-wrap justify-center p-1">
             {
@@ -87,7 +89,7 @@ export async function getServerSideProps(context: any) {
   if (!token) {
     return {
       redirect: {
-        destination: "/login",
+        destination: "/mda",
         permanent: false
       }
     };

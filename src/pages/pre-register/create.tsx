@@ -69,7 +69,7 @@ export default function CreatePreRegister() {
   };
 
   return (
-    <Container fixed>
+    <Container style={{marginTop: "7rem"}} fixed>
       <Text>{`${"Cadastro"} de Pessoa`}</Text>
       <Grid container spacing={0}>
         <Grid item lg={12} md={12} xs={12}>

@@ -25,6 +25,7 @@ import { RiAddLine, RiDeleteBinLine, RiPencilLine } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import { cellValue } from "../../utils/utilsForTable";
 import { api } from "../../services/axios";
+import { parseCookies } from "nookies";
 export default function University(prop: any) {
   return (
     <Container gap="1rem">
@@ -108,9 +109,24 @@ export default function University(prop: any) {
 //método executado no lado do servidor, quando o user acessar a página;
 //nesse caso o next faz um get na minha api antes de rendezirar a pagina, ou seja
 //antes de aparecer qualquer tipo de interface
-export async function getServerSideProps() {
-  const response = await api.get("/universities");
-  console.log(response.data);
+export async function getServerSideProps(context:any) {
+  // const response = await api.get("/universities");
+  // console.log(response.data);
+  const cookies = parseCookies(context);
+
+  const token = cookies["nextauth.token"];
+  var axios = require("axios").default;
+
+var options = {
+  method: 'GET',
+  url: 'http://localhost:8080/universities',
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+};
+
+const response = await axios.request(options)
+console.log(response.data)
   return {
     props: {
       universities: response.data
