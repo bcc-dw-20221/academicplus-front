@@ -95,7 +95,10 @@ export default function Header() {
               </div>
             </button>
             {toggleMenuUser ? (
-              <ul className="absolute top-12 right-0 flex flex-col gap-4 items-center rounded p-4 bg-white/95 dark:bg-zinc-700 border border-zinc-200 dark:border-zinc-600 scale-100">
+              <ul
+                className="absolute top-12 right-0 flex flex-col gap-4 items-center rounded p-6 bg-white/95 dark:bg-zinc-700 border border-zinc-200 dark:border-zinc-600 scale-100"
+                onMouseLeave={() => setToggleMenuUser(false)}
+              >
                 <li className="hover:border-b border-primary-500 dark:border-primary-200 hover:-mb-px">
                   <Link href="/profile">
                     <a>Perfil</a>

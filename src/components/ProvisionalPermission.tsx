@@ -3,14 +3,6 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { PATHS } from "../utils/constants";
 
-const items = [
-  { id: 1, title: "University", path: PATHS.UNIVERSITY },
-  { id: 2, title: "Pre-Registro", path: PATHS.PRE_REGISTER },
-  { id: 3, title: "Professor", path: PATHS.PROFESSOR },
-  { id: 4, title: "Cursos", path: PATHS.COURSES },
-  { id: 5, title: "Aluno", path: PATHS.STUDENT }
-];
-
 export function ProvisionalPermission() {
   const { user, setUser } = useContext<any>(AuthContext);
 

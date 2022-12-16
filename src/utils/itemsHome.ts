@@ -5,7 +5,7 @@ export const options = [
     alt: "Rapaz checando envelope",
     width: "109.69px",
     height: "96px",
-    rote: "/",
+    rote: "/"
   },
   {
     title: "Questionários",
@@ -13,7 +13,7 @@ export const options = [
     alt: "Pessoa com dúvida",
     width: "106.79px",
     height: "96px",
-    rote: "/",
+    rote: "/"
   },
   {
     title: "Pedidos de Matrícula",
@@ -21,7 +21,7 @@ export const options = [
     alt: "Moça com papelada",
     width: "182.82px",
     height: "96px",
-    rote: "/",
+    rote: "/"
   },
   {
     title: "Calendário Acadêmico",
@@ -29,7 +29,7 @@ export const options = [
     alt: "Um calendário e uma pessoa",
     width: "137.3px",
     height: "96px",
-    rote: "/",
+    rote: "/"
   },
   {
     title: "Horário Individual",
@@ -37,7 +37,7 @@ export const options = [
     alt: "Uma pessoa consultando a hora",
     width: "102.64px",
     height: "96px",
-    rote: "/",
+    rote: "/"
   },
   {
     title: "Diário",
@@ -45,7 +45,7 @@ export const options = [
     alt: "Um diário e uma garota",
     width: "166.18px",
     height: "96px",
-    rote: "/",
+    rote: "/"
   },
   {
     title: "Material de Aula",
@@ -53,7 +53,7 @@ export const options = [
     alt: "Folhas de documento",
     width: "106.96px",
     height: "96px",
-    rote: "/",
+    rote: "/"
   },
   {
     title: "Boletim",
@@ -61,7 +61,7 @@ export const options = [
     alt: "Uma pessoa com uma prova nota 10",
     width: "166.18px",
     height: "96px",
-    rote: "/",
+    rote: "/"
   },
   {
     title: "Estágios",
@@ -69,7 +69,7 @@ export const options = [
     alt: "Duas pessoas sentadas conversando em um escritório",
     width: "168.03px",
     height: "96px",
-    rote: "/",
+    rote: "/"
   },
   {
     title: "Histórico Escolar",
@@ -77,7 +77,7 @@ export const options = [
     alt: "Uma pessoa vendo vários documentos",
     width: "124.37px",
     height: "96px",
-    rote: "/",
+    rote: "/"
   },
   {
     title: "Matriz Curricular",
@@ -85,7 +85,7 @@ export const options = [
     alt: "Vários documentos verificados",
     width: "106.11px",
     height: "96px",
-    rote: "/",
+    rote: "/"
   },
   {
     title: "Atendimento ao Aluno",
@@ -93,10 +93,9 @@ export const options = [
     alt: "Uma pessoa falando em público",
     width: "149.09px",
     height: "96px",
-    rote: "/",
-  },
+    rote: "/"
+  }
 ];
-
 
 export const cardsList = {
   student: [
@@ -106,7 +105,7 @@ export const cardsList = {
       alt: "Rapaz checando envelope",
       width: "109.69px",
       height: "96px",
-      rote: "/",
+      rote: "/"
     },
     {
       title: "Questionários",
@@ -114,7 +113,7 @@ export const cardsList = {
       alt: "Pessoa com dúvida",
       width: "106.79px",
       height: "96px",
-      rote: "/",
+      rote: "/"
     },
     {
       title: "Pedidos de Matrícula",
@@ -122,7 +121,7 @@ export const cardsList = {
       alt: "Moça com papelada",
       width: "182.82px",
       height: "96px",
-      rote: "/",
+      rote: "/"
     },
     {
       title: "Calendário Acadêmico",
@@ -130,7 +129,7 @@ export const cardsList = {
       alt: "Um calendário e uma pessoa",
       width: "137.3px",
       height: "96px",
-      rote: "/",
+      rote: "/"
     },
     {
       title: "Horário Individual",
@@ -138,7 +137,7 @@ export const cardsList = {
       alt: "Uma pessoa consultando a hora",
       width: "102.64px",
       height: "96px",
-      rote: "/",
+      rote: "/"
     },
     {
       title: "Diário",
@@ -146,7 +145,7 @@ export const cardsList = {
       alt: "Um diário e uma garota",
       width: "166.18px",
       height: "96px",
-      rote: "/",
+      rote: "/"
     },
     {
       title: "Material de Aula",
@@ -154,7 +153,7 @@ export const cardsList = {
       alt: "Folhas de documento",
       width: "106.96px",
       height: "96px",
-      rote: "/",
+      rote: "/"
     },
     {
       title: "Boletim",
@@ -162,7 +161,7 @@ export const cardsList = {
       alt: "Uma pessoa com uma prova nota 10",
       width: "166.18px",
       height: "96px",
-      rote: "/",
+      rote: "/"
     },
     {
       title: "Estágios",
@@ -170,7 +169,7 @@ export const cardsList = {
       alt: "Duas pessoas sentadas conversando em um escritório",
       width: "168.03px",
       height: "96px",
-      rote: "/",
+      rote: "/"
     },
     {
       title: "Histórico Escolar",
@@ -178,7 +177,7 @@ export const cardsList = {
       alt: "Uma pessoa vendo vários documentos",
       width: "124.37px",
       height: "96px",
-      rote: "/",
+      rote: "/"
     },
     {
       title: "Matriz Curricular",
@@ -186,7 +185,7 @@ export const cardsList = {
       alt: "Vários documentos verificados",
       width: "106.11px",
       height: "96px",
-      rote: "/",
+      rote: "/"
     },
     {
       title: "Atendimento ao Aluno",
@@ -194,91 +193,17 @@ export const cardsList = {
       alt: "Uma pessoa falando em público",
       width: "149.09px",
       height: "96px",
-      rote: "/",
-    },
+      rote: "/"
+    }
   ],
-  teacher: [ 
-    {
-    title: "Caixa de mensagens",
-    img: "/caixa-mensagem.svg",
-    alt: "Rapaz checando envelope",
-    width: "109.69px",
-    height: "96px",
-    rote: "/",
-  },
-  {
-    title: "Questionários",
-    img: "/questionarios.svg",
-    alt: "Pessoa com dúvida",
-    width: "106.79px",
-    height: "96px",
-    rote: "/",
-  },
-  {
-    title: "Calendário Acadêmico",
-    img: "/calendario-academico.svg",
-    alt: "Um calendário e uma pessoa",
-    width: "137.3px",
-    height: "96px",
-    rote: "/",
-  },
-  {
-    title: "Horário Individual",
-    img: "/horario-individual.svg",
-    alt: "Uma pessoa consultando a hora",
-    width: "102.64px",
-    height: "96px",
-    rote: "/",
-  },
-  {
-    title: "Diário",
-    img: "/diario.svg",
-    alt: "Um diário e uma garota",
-    width: "166.18px",
-    height: "96px",
-    rote: "/",
-  },
-  {
-    title: "Material de Aula",
-    img: "/material-aula.svg",
-    alt: "Folhas de documento",
-    width: "106.96px",
-    height: "96px",
-    rote: "/",
-  },
-  {
-    title: "Boletim",
-    img: "/boletim.svg",
-    alt: "Uma pessoa com uma prova nota 10",
-    width: "166.18px",
-    height: "96px",
-    rote: "/",
-  },
-  {
-    title: "Estágios",
-    img: "/estagio.svg",
-    alt: "Duas pessoas sentadas conversando em um escritório",
-    width: "168.03px",
-    height: "96px",
-    rote: "/",
-  },
-  {
-    title: "Matriz Curricular",
-    img: "/matriz-curricular.svg",
-    alt: "Vários documentos verificados",
-    width: "106.11px",
-    height: "96px",
-    rote: "/",
-  },
-],
-  coordinator: [
+  teacher: [
     {
       title: "Caixa de mensagens",
       img: "/caixa-mensagem.svg",
       alt: "Rapaz checando envelope",
       width: "109.69px",
       height: "96px",
-      rote: "/",
+      rote: "/"
     },
     {
       title: "Questionários",
@@ -286,7 +211,7 @@ export const cardsList = {
       alt: "Pessoa com dúvida",
       width: "106.79px",
       height: "96px",
-      rote: "/",
+      rote: "/"
     },
     {
       title: "Calendário Acadêmico",
@@ -294,7 +219,47 @@ export const cardsList = {
       alt: "Um calendário e uma pessoa",
       width: "137.3px",
       height: "96px",
-      rote: "/",
+      rote: "/"
+    },
+    {
+      title: "Horário Individual",
+      img: "/horario-individual.svg",
+      alt: "Uma pessoa consultando a hora",
+      width: "102.64px",
+      height: "96px",
+      rote: "/"
+    },
+    {
+      title: "Diário",
+      img: "/diario.svg",
+      alt: "Um diário e uma garota",
+      width: "166.18px",
+      height: "96px",
+      rote: "/"
+    },
+    {
+      title: "Material de Aula",
+      img: "/material-aula.svg",
+      alt: "Folhas de documento",
+      width: "106.96px",
+      height: "96px",
+      rote: "/"
+    },
+    {
+      title: "Boletim",
+      img: "/boletim.svg",
+      alt: "Uma pessoa com uma prova nota 10",
+      width: "166.18px",
+      height: "96px",
+      rote: "/"
+    },
+    {
+      title: "Estágios",
+      img: "/estagio.svg",
+      alt: "Duas pessoas sentadas conversando em um escritório",
+      width: "168.03px",
+      height: "96px",
+      rote: "/"
     },
     {
       title: "Matriz Curricular",
@@ -302,17 +267,59 @@ export const cardsList = {
       alt: "Vários documentos verificados",
       width: "106.11px",
       height: "96px",
-      rote: "/",
+      rote: "/"
+    }
+  ],
+  coordinator: [
+    {
+      title: "Pré Registro",
+      img: "/matriz-curricular.svg",
+      alt: "Vários documentos verificados",
+      width: "106.11px",
+      height: "96px",
+      rote: "/pre-register"
     },
+    {
+      title: "Caixa de mensagens",
+      img: "/caixa-mensagem.svg",
+      alt: "Rapaz checando envelope",
+      width: "109.69px",
+      height: "96px",
+      rote: "/"
+    },
+    {
+      title: "Questionários",
+      img: "/questionarios.svg",
+      alt: "Pessoa com dúvida",
+      width: "106.79px",
+      height: "96px",
+      rote: "/"
+    },
+    {
+      title: "Calendário Acadêmico",
+      img: "/calendario-academico.svg",
+      alt: "Um calendário e uma pessoa",
+      width: "137.3px",
+      height: "96px",
+      rote: "/"
+    }
   ],
   education_manager: [
     {
+      title: "Pré Registro",
+      img: "/matriz-curricular.svg",
+      alt: "Vários documentos verificados",
+      width: "106.11px",
+      height: "96px",
+      rote: "/pre-register"
+    },
+    {
       title: "Caixa de mensagens",
       img: "/caixa-mensagem.svg",
       alt: "Rapaz checando envelope",
       width: "109.69px",
       height: "96px",
-      rote: "/",
+      rote: "/"
     },
     {
       title: "Questionários",
@@ -320,7 +327,7 @@ export const cardsList = {
       alt: "Pessoa com dúvida",
       width: "106.79px",
       height: "96px",
-      rote: "/",
+      rote: "/"
     },
     {
       title: "Calendário Acadêmico",
@@ -328,16 +335,7 @@ export const cardsList = {
       alt: "Um calendário e uma pessoa",
       width: "137.3px",
       height: "96px",
-      rote: "/",
-    },
-    {
-      title: "Matriz Curricular",
-      img: "/matriz-curricular.svg",
-      alt: "Vários documentos verificados",
-      width: "106.11px",
-      height: "96px",
-      rote: "/",
-    },
- 
+      rote: "/"
+    }
   ]
-}
+};
